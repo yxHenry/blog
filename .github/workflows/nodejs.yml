@@ -1,0 +1,35 @@
+# .github/workflows/nodejs.yml
+
+on: push # 触发此文件运行的条件
+name: Github Actions # 此工作流程（workflow）的名字
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action # 此任务（job）的名字
+    runs-on: ubuntu-latest # 运行环境
+    steps:
+      - uses: actions/checkout@master # 切换分支到master
+        with:
+          fetch-depth: 2
+
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+
+      - name: Build Project # 此步骤（step）的名字
+        run: yarn && yarn build # 下载依赖和构建项目
+        env:
+          LEANCLOUD_APP_ID: ${{ secrets.LEANCLOUD_APP_ID }} # 评论系统的ID
+          LEANCLOUD_APP_KEY: ${{ secrets.LEANCLOUD_APP_KEY }} # 评论系统的KEY
+
+      - name: List output files
+        run: ls -a docs/.vuepress/dist # 显示生成的目录文件
+
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v2.1.2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "docs/.vuepress/dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/var/www/blog"
