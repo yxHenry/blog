@@ -50,7 +50,7 @@ module.exports = {
     startYear: "2020", // 项目开始时间，只填写年份
     lastUpdated: "最后更新时间", // string | boolean
     author: "Henryx",
-    authorAvatar: "/avatar.svg", //作者头像
+    authorAvatar: "/avatar.jpg", //作者头像
     mode: "light", //默认显示白天模式
     // 评论设置
     valineConfig: {
