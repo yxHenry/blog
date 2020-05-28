@@ -46,7 +46,7 @@ module.exports = {
       },
     ],
     sidebar: "auto", //在所有页面中启用自动生成侧栏
-    record: "",
+    record: "蜀ICP备20015866号-1",
     startYear: "2020", // 项目开始时间，只填写年份
     lastUpdated: "最后更新时间", // string | boolean
     author: "Henryx",
