@@ -102,5 +102,6 @@ chmod +x updatessl.sh
 打开 crontab 文件
 `crontab -e`
 然后在文件末尾添加一行以下内容
-`0 0 28 * * root /etc/letsencrypt/live/{域名}/updatessl.sh //我这里代表每月28号更新一次证书文件，文件路径填写你自己的文件路径`
+`0 0 28 * * root /etc/letsencrypt/live/{域名}/updatessl.sh`
+我这里代表每月28号更新一次证书文件，文件路径填写你自己的文件路径
 重启 crontab 服务
