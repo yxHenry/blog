@@ -63,6 +63,12 @@ server {
         ssl_ciphers HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers on;
     }
+#80端口跳转到Https
+server {
+    listen 80;
+    server_name w3cschool.cn www.w3cschool.cn;
+    return 301 https://www.zhimiyun.com$request_uri; 
+}
 ```
 
 **Let's Encrypt 证书是有效期 90 天的，需要我们自己手工更新续期才可以**
