@@ -52,27 +52,16 @@ cd letsencrypt
 server {
         listen       443;
         server_name  {域名};
-        ssl on;
         root         /usr/share/nginx/html;
+        ssl on;
 
         ssl_certificate "/etc/letsencrypt/live/{域名}/fullchain.pem";
         ssl_certificate_key "/etc/letsencrypt/live/{域名}/privkey.pem";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  5m;
-        ssl_protocols SSLv2 SSLv3 TLSv1;
+        ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
         ssl_ciphers HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers on;
-
-        location / {
-        }
-
-        error_page 404 /404.html;
-            location = /40x.html {
-        }
-
-        error_page 500 502 503 504 /50x.html;
-            location = /50x.html {
-        }
     }
 ```
 
@@ -88,7 +77,7 @@ server {
 
 ```shell
 #!/bin/sh
-/usr/local/src/Python-2.7.12/letsencrypt/certbot-auto renew --force-renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+/root/letsencrypt/certbot-auto renew --force-renew --pre-hook "service nginx stop" --post-hook "service nginx start"
 #第一行是指此脚本使用/bin/sh 来执行
 #第二行中--force-renew参数代表强制更新
 ```
@@ -105,3 +94,5 @@ chmod +x updatessl.sh
 `0 0 28 * * root /etc/letsencrypt/live/{域名}/updatessl.sh`
 我这里代表每月28号更新一次证书文件，文件路径填写你自己的文件路径
 重启 crontab 服务
+`service crond restart`
+
