@@ -1,17 +1,17 @@
 ---
 title: 服务器配置https
 date: 2020-05-27
-sidebar: "auto"
+sidebar: 'auto'
 categories:
-  - 服务器端
+    - 服务器端
 tags:
-  - https
-  - Nginx
-  - Let's Encrypt
+    - https
+    - Nginx
+    - Let's Encrypt
 ---
 
 ::: tip
-大部分网页都已用上了https协议，小程序的开发更是必须使用https接口，本文旨在迅速开启域名的https协议敏捷开发
+大部分网页都已用上了 https 协议，小程序的开发更是必须使用 https 接口，本文旨在迅速开启域名的 https 协议敏捷开发
 :::
 
 <!-- more -->
@@ -42,18 +42,17 @@ cd letsencrypt
 
 在完成 Let's Encrypt 证书的生成之后，我们会在"/etc/letsencrypt/live/{域名}/"域名目录下有 4 个文件就是生成的密钥证书文件。
 
-- cert.pem - Apache 服务器端证书
-- chain.pem - Apache 根证书和中继证书
-- fullchain.pem - Nginx 所需要 ssl_certificate 文件
-- privkey.pem - 安全证书 KEY 文件
-  以下是 nginx 的配置
+-   cert.pem - Apache 服务器端证书
+-   chain.pem - Apache 根证书和中继证书
+-   fullchain.pem - Nginx 所需要 ssl_certificate 文件
+-   privkey.pem - 安全证书 KEY 文件
+    以下是 nginx 的配置
 
 ```shell
 server {
-        listen       443;
+        listen       443 ssl;
         server_name  {域名};
-        root         /usr/share/nginx/html;
-        ssl on;
+        root         {文件夹指向};
 
         ssl_certificate "/etc/letsencrypt/live/{域名}/fullchain.pem";
         ssl_certificate_key "/etc/letsencrypt/live/{域名}/privkey.pem";
@@ -67,7 +66,7 @@ server {
 server {
     listen 80;
     server_name w3cschool.cn www.w3cschool.cn;
-    return 301 https://www.zhimiyun.com$request_uri; 
+    return 301 https://www.zhimiyun.com$request_uri;
 }
 ```
 
@@ -98,7 +97,6 @@ chmod +x updatessl.sh
 `crontab -e`
 然后在文件末尾添加一行以下内容
 `0 0 28 * * root /etc/letsencrypt/live/{域名}/updatessl.sh`
-我这里代表每月28号更新一次证书文件，文件路径填写你自己的文件路径
+我这里代表每月 28 号更新一次证书文件，文件路径填写你自己的文件路径
 重启 crontab 服务
 `service crond restart`
-
