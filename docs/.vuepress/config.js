@@ -74,22 +74,22 @@ module.exports = {
       "@vuepress-reco/vuepress-plugin-bgm-player", // BGM播放器
       {
         audios: [
-          {
-            name: "他只是经过",
-            artist: "h3R3 / Felix Bennett",
-            url:
-              "http://m10.music.126.net/20200927112636/c0afc1c68bd06db6ee6fb807cb309b0e/ymusic/obj/w5zDlMODwrDDiGjCn8Ky/2653769041/9b24/36a6/ad6d/5389bfa776498530f34db6726c0ee467.mp3",
-            cover:
-              "http://p2.music.126.net/mX6DKxPxdt2nInfNCIz9Fw==/109951165015483353.jpg?param=130y130",
-          },
-          {
-            name: "谪仙",
-            artist: "伊格赛听 / 叶里",
-            url:
-              "http://m10.music.126.net/20200927113003/ab2393e50202d2ab7349400458b0ce39/ymusic/5158/0352/070f/f2f7908e014861dc0cee0e869561ea90.mp3",
-            cover:
-              "http://p2.music.126.net/X-ZQ6wkyaL9cJTiyxmDhuw==/109951164680974796.jpg?param=130y130",
-          },
+          // {
+          //   name: "他只是经过",
+          //   artist: "h3R3 / Felix Bennett",
+          //   url:
+          //     "http://m10.music.126.net/20200927112636/c0afc1c68bd06db6ee6fb807cb309b0e/ymusic/obj/w5zDlMODwrDDiGjCn8Ky/2653769041/9b24/36a6/ad6d/5389bfa776498530f34db6726c0ee467.mp3",
+          //   cover:
+          //     "http://p2.music.126.net/mX6DKxPxdt2nInfNCIz9Fw==/109951165015483353.jpg?param=130y130",
+          // },
+          // {
+          //   name: "谪仙",
+          //   artist: "伊格赛听 / 叶里",
+          //   url:
+          //     "http://m10.music.126.net/20200927113003/ab2393e50202d2ab7349400458b0ce39/ymusic/5158/0352/070f/f2f7908e014861dc0cee0e869561ea90.mp3",
+          //   cover:
+          //     "http://p2.music.126.net/X-ZQ6wkyaL9cJTiyxmDhuw==/109951164680974796.jpg?param=130y130",
+          // },
           // {
           //   name: "Faster Than Light",
           //   artist: "Andreas Waldetoft / Mia Stegmar",
